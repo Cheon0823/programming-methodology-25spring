@@ -23,6 +23,7 @@ int Calculator::div(int a, int b) {
     int c;
     if (b == 0) {
         throw std::invalid_argument("Division by zero");
+        return 0;
     }
     c = a / b;
     return c;

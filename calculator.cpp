@@ -22,8 +22,7 @@ int Calculator::mul(int a, int b) {
 int Calculator::div(int a, int b) {
     int c;
     if (b == 0) {
-        c == -1;
-        return c;
+        throw std::invalid_argument("Division by zero");
     }
     c = a / b;
     return c;

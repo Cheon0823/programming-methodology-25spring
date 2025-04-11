@@ -2,22 +2,18 @@
 #include <stdexcept>
 
 int Calculator::add(int a, int b) {
-    if (a > INT_MAX - b) {
-        throw std::overflow_error("Additional Overflow");
-    }
-    if (b<0 && a < INT_MIN - b) {
-        throw std::underflow_error("Additional Underflow");
-    }
+    if (b > 0 && a > INT_MAX - b)
+        throw std::overflow_error("Addition overflow");
+    if (b < 0 && a < INT_MIN - b)
+        throw std::underflow_error("Addition underflow");
     return a + b;
 }
 
 int Calculator::sub(int a, int b) {
-    if (a > INT_MAX + b) {
-        throw std::overflow_error("Substraction Overflow");
-    }
-    if (b > 0 && a < INT_MIN + b) {
-        throw std::underflow_error("Substraction Underflow");
-    }
+    if (b < 0 && a > INT_MAX + b)
+        throw std::overflow_error("Subtraction overflow");
+    if (b > 0 && a < INT_MIN + b)
+        throw std::underflow_error("Subtraction underflow");
     return a - b;
 }
 
@@ -34,14 +30,9 @@ int Calculator::mul(int a, int b) {
 }
 
 int Calculator::div(int a, int b) {
-    if (b == 0) {
-        throw std::invalid_argument("Division by zero");
-    }
-    if (a > INT_MAX * b) {
-        throw std::overflow_error("Multiplication Overflow");
-    }
-    if (a < INT_MIN * b) {
-        throw std::underflow_error("Multiplication Underflow");
-    }
+    if (b == 0)
+        throw std::invalid_argument("Divide by zero");
+    if (a == INT_MIN && b == -1)
+        throw std::overflow_error("Division overflow");
     return a / b;
 }

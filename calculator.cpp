@@ -21,6 +21,10 @@ int Calculator::mul(int a, int b) {
 
 int Calculator::div(int a, int b) {
     int c;
+    if (b == 0) {
+        c == -1;
+        return c;
+    }
     c = a / b;
     return c;
 }
